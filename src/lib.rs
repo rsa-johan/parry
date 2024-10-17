@@ -1,11 +1,13 @@
 mod utils;
 
-use std::collections::HashMap;
+use std::{collections::HashMap, env};
 use utils::runtime::get_next_arg;
 
+#[derive(Debug)]
 pub struct Cmd {
     params: Vec<String>,
     map: HashMap<String, String>,
+    pub args: Vec<String>,
 }
 
 impl Cmd {
@@ -13,6 +15,7 @@ impl Cmd {
         Cmd {
             params: Vec::new(),
             map: HashMap::new(),
+            args: env::args().collect(),
         }
     }
 
